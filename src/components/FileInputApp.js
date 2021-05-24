@@ -1,28 +1,46 @@
 import React, { useState } from "react";
-import { FileInput, FormField } from "grommet";
-import { useUploadImage } from "../hook/useUploadImage";
+import { FileInput, FormField , Image, Box } from "grommet";
+import { uploadImage } from "../helper/uploadImage";
+import { ProgressBarApp } from "./ProgressBarApp";
+
 
 
 export const FileInputApp = () => {
 
-  const [file, setFile] = useState();
-  useUploadImage(file);
+  
+  const [img, setImg] = useState('https://www.taekwondoitf.es/invictusmalaga/wp-content/uploads/sites/4/2017/12/no-image.png');
+  const [show, setShow] = useState(true);
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFile(e.target.files[0]);
+    const file = e.target.files[0];
+    const fileDone = await uploadImage(file);
+    setShow(false);
+    setTimeout(() => {
+      setImg(fileDone);
+    }, 1000);
   };
 
+
   return (
-    <FormField onSubmit={handleSubmit}>
+    <FormField>
       <FileInput
         name="imageFile"
-        style={{
-          paddingBottom: "20px",
-        }}
         onChange={handleSubmit}
-      
       />
+    <Box pad="small">
+
+    {
+      !show && <ProgressBarApp/>
+    }
+      
+    <Image
+          fit="cover"
+          style={{paddingTop: "30px",}}
+          src={img}
+      />  
+      </Box>
     </FormField>
   );
 };
