@@ -3,7 +3,7 @@ import { FileInput, FormField , Image, Box } from "grommet";
 import { uploadImage } from "../helper/uploadImage";
 import { ProgressBarApp } from "./ProgressBarApp";
 
-
+// Upload image to Cloudinary server
 
 export const FileInputApp = () => {
 
@@ -19,7 +19,8 @@ export const FileInputApp = () => {
     setShow(false);
     setTimeout(() => {
       setImg(fileDone);
-    }, 1000);
+      setShow(true);       // reset show state
+    }, 1500);
   };
 
 
@@ -30,16 +31,12 @@ export const FileInputApp = () => {
         onChange={handleSubmit}
       />
     <Box pad="small">
-
-    {
-      !show && <ProgressBarApp/>
-    }
-      
+    {!show && <ProgressBarApp/>}
     <Image
-          fit="cover"
-          style={{paddingTop: "30px",}}
-          src={img}
-      />  
+      fit="cover"
+      style={{paddingTop: "30px",}}
+      src={img}
+    />  
       </Box>
     </FormField>
   );
