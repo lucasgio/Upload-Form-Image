@@ -1,4 +1,4 @@
-
+// Upload image to Cloudinary server
 
 export const uploadImage = async (file) => {
     

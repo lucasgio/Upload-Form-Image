@@ -9,9 +9,7 @@ export const App = () => {
   return (
     <Grommet theme={grommet}>
       <Box fill align="center" justify="start" pad="large">
-      
-      <FileInputApp/>
-       
+        <FileInputApp/>
       </Box>
     </Grommet>
   );

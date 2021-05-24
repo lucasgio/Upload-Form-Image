@@ -10,7 +10,7 @@ export const ProgressBarApp = () => {
         setTimeout(() => {
             setPercent( percent + 10);
         }, 100);
-    }, [percent])
+    }, [percent]);
 
 
 
