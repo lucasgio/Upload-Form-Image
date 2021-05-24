@@ -3,7 +3,7 @@ import { FileInput, FormField , Image, Box } from "grommet";
 import { uploadImage } from "../helper/uploadImage";
 import { ProgressBarApp } from "./ProgressBarApp";
 
-// Upload image to Cloudinary server
+
 
 export const FileInputApp = () => {
 
